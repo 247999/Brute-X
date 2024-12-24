@@ -12,13 +12,16 @@
       background-color: #121212;
       color: #fff;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     h1 {
       color: #e74c3c;
     }
     .container {
       max-width: 800px;
-      margin: 50px auto;
+      margin: auto;
       padding: 20px;
       background-color: #222;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -72,6 +75,13 @@
       font-size: 18px;
       color: #e74c3c;
     }
+    footer {
+      margin-top: auto;
+      padding: 10px 0;
+      background-color: #222;
+      color: #888;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -119,6 +129,11 @@
       <p><strong>Note:</strong> The transaction will only be successful if the exact amount is paid.</p>
     </div>
   </div>
+
+  <!-- Footer Section -->
+  <footer>
+    © 2024 Brute X. All Rights Reserved.
+  </footer>
 
   <script>
     // Fetch live Bitcoin price and convert USD to BTC
