@@ -36,6 +36,20 @@
     button:hover {
       background-color: #45a049;
     }
+    .price {
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    .discounted-price {
+      color: #e74c3c;
+      font-size: 24px;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: #888;
+    }
     .timer {
       font-size: 24px;
       margin-top: 20px;
@@ -62,9 +76,20 @@
     
     <div>
       <button id="buyButton">Buy 1 Month Access - $50</button>
-      <button id="buyPermanentButton">Buy Permanent Access - $200</button>
+      <div class="price">
+        <span class="original-price">$300</span>
+        <span class="discounted-price">$50</span>
+      </div>
     </div>
     
+    <div>
+      <button id="buyPermanentButton">Buy Permanent Access - $200</button>
+      <div class="price">
+        <span class="original-price">$999</span>
+        <span class="discounted-price">$200</span>
+      </div>
+    </div>
+
     <div class="timer" id="timer">
       <span>Waiting for transaction...</span>
       <div id="countdown"></div>
