@@ -9,22 +9,23 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #121212;
+      color: #fff;
       text-align: center;
     }
     h1 {
-      color: #333;
+      color: #e74c3c;
     }
     .container {
       max-width: 800px;
       margin: 50px auto;
       padding: 20px;
-      background-color: #fff;
+      background-color: #222;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
     }
     button {
-      background-color: #4CAF50;
+      background-color: #e74c3c;
       color: white;
       font-size: 16px;
       padding: 10px 20px;
@@ -34,13 +35,13 @@
       margin-top: 20px;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #c0392b;
     }
     .price {
       font-size: 20px;
       margin-top: 20px;
       font-weight: bold;
-      color: #333;
+      color: #fff;
     }
     .discounted-price {
       color: #e74c3c;
@@ -58,13 +59,18 @@
     .wallet-info {
       margin-top: 20px;
       font-size: 18px;
-      color: #333;
+      color: #fff;
       display: none;
     }
     .wallet-address {
       font-size: 20px;
       font-weight: bold;
       word-wrap: break-word;
+    }
+    .notice {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #e74c3c;
     }
   </style>
 </head>
@@ -90,12 +96,18 @@
       </div>
     </div>
 
-    <div class="timer" id="timer">
+    <!-- Waiting for transaction and download link notice -->
+    <div class="timer" id="timer" style="display: none;">
       <span>Waiting for transaction...</span>
       <div id="countdown"></div>
     </div>
+    
+    <div class="notice" id="downloadNotice" style="display: none;">
+      <p>Download Link with Access Key will show after payment.</p>
+    </div>
 
-    <div class="wallet-info" id="walletInfo">
+    <!-- Bitcoin Wallet Info -->
+    <div class="wallet-info" id="walletInfo" style="display: none;">
       <p>Send your payment to this Bitcoin address:</p>
       <p class="wallet-address" id="walletAddress">bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</p>
     </div>
@@ -123,12 +135,14 @@
     document.getElementById("buyButton").addEventListener("click", function() {
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
+      document.getElementById("downloadNotice").style.display = "block";
       startTimer();
     });
 
     document.getElementById("buyPermanentButton").addEventListener("click", function() {
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
+      document.getElementById("downloadNotice").style.display = "block";
       startTimer();
     });
   </script>
