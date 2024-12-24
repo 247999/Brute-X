@@ -5,94 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brute X - Crypto Wallet Finder</title>
   <style>
+    /* General Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #121212;
-      color: #fff;
-      text-align: center;
+      background-color: #1a1a1a;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      text-align: center;
     }
     h1 {
+      font-size: 2.5rem;
       color: #e74c3c;
+      margin: 20px 0;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #cccccc;
     }
     .container {
       max-width: 800px;
       margin: auto;
       padding: 20px;
-      background-color: #222;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      background-color: #2a2a2a;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+      border-radius: 12px;
     }
-    button {
-      background-color: #e74c3c;
-      color: white;
-      font-size: 16px;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      margin-top: 20px;
+    .price-box {
+      margin: 20px 0;
     }
-    button:hover {
-      background-color: #c0392b;
-    }
-    .price {
-      font-size: 20px;
-      margin-top: 20px;
-      font-weight: bold;
+    .price-box button {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
       color: #fff;
+      font-size: 1.2rem;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out, transform 0.2s ease;
+    }
+    .price-box button:hover {
+      background: linear-gradient(45deg, #c0392b, #a93226);
+      transform: scale(1.03);
+    }
+    .price-box .price {
+      font-size: 1.2rem;
+      margin: 10px 0;
     }
     .discounted-price {
       color: #e74c3c;
-      font-size: 24px;
+      font-size: 1.5rem;
     }
     .original-price {
       text-decoration: line-through;
       color: #888;
+      font-size: 1rem;
     }
-    .timer {
-      font-size: 24px;
-      margin-top: 20px;
-      color: #ff5733;
-    }
+    /* Wallet Information */
     .wallet-info {
-      margin-top: 20px;
-      font-size: 18px;
-      color: #fff;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #333;
+      border-radius: 8px;
       display: none;
     }
+    .wallet-info p {
+      margin: 10px 0;
+      color: #ffffff;
+    }
     .wallet-address {
-      font-size: 20px;
+      font-size: 1.2rem;
       font-weight: bold;
-      word-wrap: break-word;
+      color: #ffcc00;
+      word-break: break-word;
+    }
+    .timer {
+      font-size: 1.5rem;
+      margin: 20px 0;
+      color: #ff5733;
+      display: none;
     }
     .notice {
       margin-top: 20px;
-      font-size: 18px;
+      font-size: 1rem;
       color: #e74c3c;
+      display: none;
     }
-    footer {
-      margin-top: auto;
-      padding: 10px 0;
-      background-color: #222;
-      color: #888;
-      font-size: 14px;
-    }
+    /* Telegram Button */
     .telegram-btn {
       display: inline-flex;
       align-items: center;
-      background-color: #0088cc;
+      justify-content: center;
+      background: #0088cc;
       color: #fff;
       text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      margin-top: 30px;
+      padding: 12px 20px;
+      margin: 20px auto;
+      border-radius: 8px;
+      font-size: 1.1rem;
       font-weight: bold;
-      font-size: 16px;
+      transition: background 0.3s ease;
     }
     .telegram-btn img {
       width: 20px;
@@ -100,59 +118,60 @@
       margin-right: 10px;
     }
     .telegram-btn:hover {
-      background-color: #0078b8;
+      background: #0078b8;
+    }
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 20px 0;
+      background-color: #121212;
+      color: #888888;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h1>Brute X Crypto Wallet Finder</h1>
-    <p>Select your access plan:</p>
-    
-    <div>
+    <p>Secure your access to the most powerful crypto wallet recovery tool.</p>
+
+    <!-- Price Options -->
+    <div class="price-box">
       <button id="buyButton">Buy 1 Month Access - $50</button>
       <div class="price">
         <span class="original-price">$300</span>
-        <span class="discounted-price">$50</span>  
-        <div id="btcPrice1Month"></div>  <!-- This will display the BTC price for 1 Month -->
+        <span class="discounted-price">$50</span>
+        <div id="btcPrice1Month"></div>
       </div>
     </div>
-    
-    <div>
+
+    <div class="price-box">
       <button id="buyPermanentButton">Buy Permanent Access - $200</button>
       <div class="price">
         <span class="original-price">$999</span>
-        <span class="discounted-price">$200</span>  
-        <div id="btcPricePermanent"></div>  <!-- This will display the BTC price for Permanent Access -->
+        <span class="discounted-price">$200</span>
+        <div id="btcPricePermanent"></div>
       </div>
     </div>
 
-    <!-- Waiting for transaction and download link notice -->
-    <div class="timer" id="timer" style="display: none;">
-      <span>Waiting for transaction...</span>
-      <div id="countdown"></div>
+    <!-- Waiting for Transaction -->
+    <div class="timer" id="timer">
+      Waiting for transaction... <span id="countdown"></span>
     </div>
-    
-    <div class="notice" id="downloadNotice" style="display: none;">
-      <p>Download Link with Access Key will show after payment.</p>
+    <div class="notice" id="downloadNotice">
+      Download Link with Access Key will show after payment.
     </div>
 
-    <!-- Bitcoin Wallet Info -->
-    <div class="wallet-info" id="walletInfo" style="display: none;">
+    <!-- Wallet Information -->
+    <div class="wallet-info" id="walletInfo">
       <p>Send your payment to this Bitcoin address:</p>
-      <p class="wallet-address" id="walletAddress">bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</p>
-    </div>
-
-    <!-- Payment note -->
-    <div class="notice" id="paymentNote" style="display: none;">
-      <p><strong>Note:</strong> The transaction will only be successful if the exact amount is paid.</p>
+      <p class="wallet-address">bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</p>
     </div>
 
     <!-- Telegram Button -->
     <a href="https://t.me/brutex2024" class="telegram-btn">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
-      Join our Telegram
+      Join Our Telegram
     </a>
   </div>
 
@@ -162,33 +181,26 @@
   </footer>
 
   <script>
-    // Fetch live Bitcoin price and convert USD to BTC
+    // Fetch live Bitcoin price and update
     function updateBTCPrice() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
         .then(response => response.json())
         .then(data => {
           const btcPrice = data.bitcoin.usd;
-          
-          // Convert USD to BTC
           const price1MonthUSD = 50;
           const pricePermanentUSD = 200;
-          
           const btcFor1Month = (price1MonthUSD / btcPrice).toFixed(6);
           const btcForPermanent = (pricePermanentUSD / btcPrice).toFixed(6);
-
-          // Display BTC price on the page
-          document.getElementById('btcPrice1Month').innerHTML = `(~${btcFor1Month} BTC)`;
-          document.getElementById('btcPricePermanent').innerHTML = `(~${btcForPermanent} BTC)`;
+          document.getElementById('btcPrice1Month').textContent = ` (~${btcFor1Month} BTC)`;
+          document.getElementById('btcPricePermanent').textContent = ` (~${btcForPermanent} BTC)`;
         })
         .catch(error => console.error('Error fetching Bitcoin price:', error));
     }
-
-    // Initialize the Bitcoin price update
     updateBTCPrice();
 
     // Timer Functionality
     let countdownTimer;
-    let timeRemaining = 30 * 60; // 30 minutes in seconds
+    let timeRemaining = 30 * 60;
 
     function startTimer() {
       countdownTimer = setInterval(function() {
@@ -203,12 +215,10 @@
       }, 1000);
     }
 
-    // Show wallet info and start the timer when the buy button is clicked
     document.getElementById("buyButton").addEventListener("click", function() {
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
       document.getElementById("downloadNotice").style.display = "block";
-      document.getElementById("paymentNote").style.display = "block";
       startTimer();
     });
 
@@ -216,7 +226,6 @@
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
       document.getElementById("downloadNotice").style.display = "block";
-      document.getElementById("paymentNote").style.display = "block";
       startTimer();
     });
   </script>
