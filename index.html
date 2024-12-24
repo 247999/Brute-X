@@ -72,11 +72,6 @@
       font-size: 18px;
       color: #e74c3c;
     }
-    .chart-container {
-      margin-top: 20px;
-      width: 100%;
-      height: 400px;
-    }
   </style>
 </head>
 <body>
@@ -89,7 +84,8 @@
       <button id="buyButton">Buy 1 Month Access - $50</button>
       <div class="price">
         <span class="original-price">$300</span>
-        <span class="discounted-price">$50</span>
+        <span class="discounted-price">$50</span>  
+        <div id="btcPrice1Month"></div>  <!-- This will display the BTC price for 1 Month -->
       </div>
     </div>
     
@@ -97,13 +93,9 @@
       <button id="buyPermanentButton">Buy Permanent Access - $200</button>
       <div class="price">
         <span class="original-price">$999</span>
-        <span class="discounted-price">$200</span>
+        <span class="discounted-price">$200</span>  
+        <div id="btcPricePermanent"></div>  <!-- This will display the BTC price for Permanent Access -->
       </div>
-    </div>
-
-    <!-- Bitcoin Price Chart -->
-    <div class="chart-container">
-      <div id="tv_chart_container"></div>
     </div>
 
     <!-- Waiting for transaction and download link notice -->
@@ -128,24 +120,30 @@
     </div>
   </div>
 
-  <script src="https://s3.tradingview.com/tv.js"></script>
   <script>
-    // Initialize TradingView Chart
-    new TradingView.widget({
-      "container_id": "tv_chart_container",
-      "autosize": true,
-      "symbol": "BITSTAMP:BTCUSD",
-      "interval": "15",
-      "timezone": "exchange",
-      "theme": "dark",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "allow_symbol_change": true,
-      "details": true,
-      "hideideas": true
-    });
+    // Fetch live Bitcoin price and convert USD to BTC
+    function updateBTCPrice() {
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          const btcPrice = data.bitcoin.usd;
+          
+          // Convert USD to BTC
+          const price1MonthUSD = 50;
+          const pricePermanentUSD = 200;
+          
+          const btcFor1Month = (price1MonthUSD / btcPrice).toFixed(6);
+          const btcForPermanent = (pricePermanentUSD / btcPrice).toFixed(6);
+
+          // Display BTC price on the page
+          document.getElementById('btcPrice1Month').innerHTML = `(~${btcFor1Month} BTC)`;
+          document.getElementById('btcPricePermanent').innerHTML = `(~${btcForPermanent} BTC)`;
+        })
+        .catch(error => console.error('Error fetching Bitcoin price:', error));
+    }
+
+    // Initialize the Bitcoin price update
+    updateBTCPrice();
 
     // Timer Functionality
     let countdownTimer;
