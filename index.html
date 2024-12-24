@@ -72,6 +72,11 @@
       font-size: 18px;
       color: #e74c3c;
     }
+    .chart-container {
+      margin-top: 20px;
+      width: 100%;
+      height: 400px;
+    }
   </style>
 </head>
 <body>
@@ -96,6 +101,11 @@
       </div>
     </div>
 
+    <!-- Bitcoin Price Chart -->
+    <div class="chart-container">
+      <div id="tv_chart_container"></div>
+    </div>
+
     <!-- Waiting for transaction and download link notice -->
     <div class="timer" id="timer" style="display: none;">
       <span>Waiting for transaction...</span>
@@ -111,9 +121,32 @@
       <p>Send your payment to this Bitcoin address:</p>
       <p class="wallet-address" id="walletAddress">bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</p>
     </div>
+
+    <!-- Payment note -->
+    <div class="notice" id="paymentNote" style="display: none;">
+      <p><strong>Note:</strong> The transaction will only be successful if the exact amount is paid.</p>
+    </div>
   </div>
 
+  <script src="https://s3.tradingview.com/tv.js"></script>
   <script>
+    // Initialize TradingView Chart
+    new TradingView.widget({
+      "container_id": "tv_chart_container",
+      "autosize": true,
+      "symbol": "BITSTAMP:BTCUSD",
+      "interval": "15",
+      "timezone": "exchange",
+      "theme": "dark",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "allow_symbol_change": true,
+      "details": true,
+      "hideideas": true
+    });
+
     // Timer Functionality
     let countdownTimer;
     let timeRemaining = 30 * 60; // 30 minutes in seconds
@@ -136,6 +169,7 @@
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
       document.getElementById("downloadNotice").style.display = "block";
+      document.getElementById("paymentNote").style.display = "block";
       startTimer();
     });
 
@@ -143,6 +177,7 @@
       document.getElementById("walletInfo").style.display = "block";
       document.getElementById("timer").style.display = "block";
       document.getElementById("downloadNotice").style.display = "block";
+      document.getElementById("paymentNote").style.display = "block";
       startTimer();
     });
   </script>
