@@ -2,70 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Test</title>
+  <title>GTA6 EARLY ACCESS</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #1f1f1f;
-      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      color: #222;
       text-align: center;
-      padding: 40px;
+      padding: 60px 20px;
     }
+
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 3.2em;
+      margin-bottom: 40px;
     }
+
     .price {
-      font-size: 1.5em;
-      margin-bottom: 30px;
+      font-size: 2em;
+      margin-bottom: 40px;
     }
+
     .price del {
-      color: #888;
-      margin-left: 10px;
+      color: #999;
+      margin-left: 15px;
     }
+
     button {
-      background-color: #28a745;
+      background-color: #007bff;
       border: none;
       color: white;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 20px 40px;
+      font-size: 1.5em;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 8px;
       margin-top: 10px;
+      transition: background-color 0.3s ease;
     }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
     #timer {
-      font-size: 1.2em;
-      margin-top: 20px;
+      font-size: 1.5em;
+      margin-top: 40px;
       display: none;
+      line-height: 1.6;
     }
+
+    code {
+      display: block;
+      font-size: 1.2em;
+      margin-top: 10px;
+      background: #eaeaea;
+      padding: 10px;
+      border-radius: 6px;
+      word-break: break-all;
+    }
+
+    .note {
+      margin-top: 25px;
+      font-style: italic;
+      color: #555;
+      font-size: 1em;
+    }
+
     .support {
-      margin-top: 60px;
+      margin-top: 80px;
     }
+
     .support a {
       display: inline-block;
       background-color: #ff0050;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      line-height: 60px;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
       text-align: center;
       text-decoration: none;
-      font-size: 30px;
+      font-size: 36px;
       color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
-    .note {
-      margin-top: 20px;
-      font-style: italic;
-      color: #cccccc;
+
+    .support .note {
+      margin-top: 12px;
+      font-size: 1.1em;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <h1>GTA6 EARLY ACCESS</h1>
+  <h1>Test</h1>
 
   <div class="price">
-    $300 <del>$500</del> (BTC ≈ 0.0046*)
+    <span>$300</span> <del>$500</del> <span>(BTC ≈ 0.0046*)</span>
   </div>
 
   <button onclick="startTimer()">Buy</button>
@@ -73,12 +105,12 @@
   <div id="timer">
     <p><strong>15:00</strong> minutes remaining</p>
     <p>Please send the exact amount to this address:</p>
-    <p><code>bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</code></p>
-    <p class="note">Note: Please send the exact amount to this address to open Download-Link</p>
+    <code>bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</code>
+    <p class="note">Please send the exact amount to this address to open Download-Link</p>
   </div>
 
   <div class="support">
-    <a href="https://www.tiktok.com/@badahhclips?_t=ZN-8w9vhRCg0Ry&_r=1" target="_blank">T</a>
+    <a href="https://www.tiktok.com/@earlygta6?_t=ZN-8w9x085gaX8&_r=1" target="_blank">T</a>
     <div class="note">Support</div>
   </div>
 
