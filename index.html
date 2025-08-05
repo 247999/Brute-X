@@ -1,137 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>VEO3 PERMANENT CRACKED (LAST UPDATE : 12/18/25)</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f4f4;
-      color: #222;
-      text-align: center;
-      padding: 60px 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help End the Wars</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    h1 {
-      font-size: 3.2em;
-      margin-bottom: 40px;
-    }
+        .container {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 90%;
+        }
 
-    .price {
-      font-size: 2em;
-      margin-bottom: 40px;
-    }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #00ffcc;
+        }
 
-    .price del {
-      color: #999;
-      margin-left: 15px;
-    }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
 
-    button {
-      background-color: #007bff;
-      border: none;
-      color: white;
-      padding: 20px 40px;
-      font-size: 1.5em;
-      cursor: pointer;
-      border-radius: 8px;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-    }
+        button {
+            background-color: #00ffcc;
+            color: #0f2027;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
 
-    button:hover {
-      background-color: #0056b3;
-    }
+        button:hover {
+            background-color: #00e6b8;
+        }
 
-    #timer {
-      font-size: 1.5em;
-      margin-top: 40px;
-      display: none;
-      line-height: 1.6;
-    }
+        #donation-info {
+            display: none;
+            margin-top: 30px;
+            font-size: 1em;
+            word-wrap: break-word;
+        }
 
-    code {
-      display: block;
-      font-size: 1.2em;
-      margin-top: 10px;
-      background: #eaeaea;
-      padding: 10px;
-      border-radius: 6px;
-      word-break: break-all;
-    }
-
-    .note {
-      margin-top: 25px;
-      font-style: italic;
-      color: #555;
-      font-size: 1em;
-    }
-
-    .support {
-      margin-top: 80px;
-    }
-
-    .support a {
-      display: inline-block;
-      background-color: #ff0050;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      line-height: 70px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 36px;
-      color: white;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .support .note {
-      margin-top: 12px;
-      font-size: 1.1em;
-      font-weight: bold;
-    }
-  </style>
+        .bitcoin-address {
+            background-color: #1c1c1c;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            font-size: 0.95em;
+            color: #00ffcc;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Help to End the Wars and Save the World</h1>
+        <p>
+            I hold valuable information that “these people” do not want released. I refuse to resort to crime to fund my mission.  
+            Your donation will help me travel, stay safe, and bring truth to light. Every contribution helps me continue this critical work.  
+            Together, we can stand for peace and justice. 
+        </p>
+        <button onclick="showDonation()">Donate</button>
 
-  <h1>VEO3 PERMANENT CRACKED (LAST UPDATE 12/18/25)</h1>
+        <div id="donation-info">
+            <p>Donations via Bitcoin to this Address:</p>
+            <div class="bitcoin-address">
+                bc1qt49pgxy0574t94qnz932aw83frfc627mvqmyyw
+            </div>
+            <p>Thank you for your Support to Save the World!</p>
+        </div>
+    </div>
 
-  <div class="price">
-    <span>$50</span> <del>$250</del> <span>(BTC ≈ 0.00048*)</span>
-  </div>
-
-  <button onclick="startTimer()">Buy</button>
-
-  <div id="timer">
-    <p><strong>15:00</strong> minutes remaining</p>
-    <p>Please send the exact amount to this address:</p>
-    <code>bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</code>
-    <p class="note">Please send the exact amount to this address to open Download-Link</p>
-  </div>
-
-  <div class="support">
-    <a href="https://www.tiktok.com/@trendvisionairy?_t=ZN-8xICs3t3b4I&_r=1" target="_blank">T</a>
-    <div class="note">Support</div>
-  </div>
-
-  <script>
-    function startTimer() {
-      const timerDiv = document.getElementById("timer");
-      timerDiv.style.display = "block";
-
-      let time = 15 * 60;
-      const interval = setInterval(() => {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        timerDiv.querySelector("strong").innerText =
-          `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        if (time <= 0) {
-          clearInterval(interval);
+    <script>
+        function showDonation() {
+            document.getElementById("donation-info").style.display = "block";
         }
-        time--;
-      }, 1000);
-    }
-  </script>
-
+    </script>
 </body>
 </html>
