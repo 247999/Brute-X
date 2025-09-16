@@ -153,6 +153,9 @@
       <p><strong>0xc7D01556a210A891DdD5EadFDCEA2637231B475D</strong></p>
       <p><strong>CAUTION! Pay exactly 100 USDT to this Address!</strong></p>
       <div id="timer">30:00</div>
+      <p style="color:#ff6666; font-weight:bold; text-shadow:0 0 10px #ff0000;">
+        Order will only be delivered if Payment has been made!
+      </p>
       <button class="btn" onclick="placeOrder()">Order</button>
     </div>
 
@@ -213,12 +216,13 @@
     }
 
     /* ======================
-       BACKGROUND ANIMATION
+       STARFIELD BACKGROUND
     ====================== */
     const canvas = document.getElementById("bg");
     const ctx = canvas.getContext("2d");
     let width, height;
-    let orbs = [];
+    let stars = [];
+    let shootingStars = [];
 
     function resize() {
       width = canvas.width = window.innerWidth;
@@ -227,40 +231,83 @@
     window.addEventListener("resize", resize);
     resize();
 
-    function createOrbs(num) {
-      orbs = [];
+    // Create stars
+    function createStars(num) {
+      stars = [];
       for (let i = 0; i < num; i++) {
-        orbs.push({
+        stars.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          radius: Math.random() * 3 + 2,
-          dx: (Math.random() - 0.5) * 0.5,
-          dy: (Math.random() - 0.5) * 0.5,
-          color: `hsla(${Math.random()*360}, 100%, 70%, 0.8)`
+          radius: Math.random() * 1.5,
+          alpha: Math.random(),
+          dAlpha: (Math.random() * 0.02) + 0.005
         });
       }
     }
 
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      for (let orb of orbs) {
+    // Shooting star generator
+    function spawnShootingStar() {
+      shootingStars.push({
+        x: Math.random() * width,
+        y: Math.random() * height * 0.5,
+        length: Math.random() * 80 + 50,
+        speed: Math.random() * 10 + 6,
+        opacity: 1
+      });
+    }
+
+    function drawStars() {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, width, height);
+
+      for (let star of stars) {
         ctx.beginPath();
-        ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI*2);
-        ctx.fillStyle = orb.color;
-        ctx.shadowColor = orb.color;
-        ctx.shadowBlur = 20;
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
         ctx.fill();
 
-        orb.x += orb.dx;
-        orb.y += orb.dy;
-
-        if (orb.x < 0 || orb.x > width) orb.dx *= -1;
-        if (orb.y < 0 || orb.y > height) orb.dy *= -1;
+        star.alpha += star.dAlpha;
+        if (star.alpha <= 0 || star.alpha >= 1) {
+          star.dAlpha = -star.dAlpha;
+        }
       }
+    }
+
+    function drawShootingStars() {
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        let s = shootingStars[i];
+        ctx.beginPath();
+        let grad = ctx.createLinearGradient(s.x, s.y, s.x - s.length, s.y + s.length);
+        grad.addColorStop(0, `rgba(255,255,255,${s.opacity})`);
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x - s.length, s.y + s.length);
+        ctx.stroke();
+
+        s.x += -s.speed;
+        s.y += s.speed;
+        s.opacity -= 0.02;
+
+        if (s.opacity <= 0) {
+          shootingStars.splice(i, 1);
+        }
+      }
+    }
+
+    function animate() {
+      drawStars();
+      drawShootingStars();
+
+      if (Math.random() < 0.01) { // chance to spawn a shooting star
+        spawnShootingStar();
+      }
+
       requestAnimationFrame(animate);
     }
 
-    createOrbs(60); // number of glowing orbs
+    createStars(200);
     animate();
   </script>
 </body>
