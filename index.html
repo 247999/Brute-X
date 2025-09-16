@@ -1,100 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help End the Wars</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <title>PANAMA ALIEN</title>
+  <style>
+    /* Reset & Base */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
 
-        .container {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            max-width: 600px;
-            width: 90%;
-        }
+    body {
+      background: #000;
+      color: #e0fff9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      position: relative;
+    }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #00ffcc;
-        }
+    /* Background Canvas */
+    canvas#bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.5;
-        }
+    /* Content Container */
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      z-index: 1;
+    }
 
-        button {
-            background-color: #00ffcc;
-            color: #0f2027;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-        }
+    h1 {
+      font-size: 3em;
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+      margin-bottom: 10px;
+    }
 
-        button:hover {
-            background-color: #00e6b8;
-        }
+    h2, p {
+      color: #cceee8;
+      margin-bottom: 20px;
+    }
 
-        #donation-info {
-            display: none;
-            margin-top: 30px;
-            font-size: 1em;
-            word-wrap: break-word;
-        }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      background: #00ffcc;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00ffcc;
+    }
 
-        .bitcoin-address {
-            background-color: #1c1c1c;
-            padding: 10px;
-            border-radius: 10px;
-            margin-top: 10px;
-            font-family: monospace;
-            font-size: 0.95em;
-            color: #00ffcc;
-        }
-    </style>
+    .btn:hover {
+      background: #00ccaa;
+      box-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc;
+      transform: scale(1.05);
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    .active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form input {
+      display: block;
+      margin: 12px auto;
+      padding: 12px;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      border: 1px solid #00ffcc;
+      background: #111;
+      color: #fff;
+      font-size: 1em;
+      box-shadow: 0 0 8px #00ffcc55;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    form input:focus {
+      border-color: #00ffcc;
+      outline: none;
+      box-shadow: 0 0 12px #00ffcc;
+    }
+
+    #timer {
+      font-size: 2em;
+      margin: 15px 0;
+      color: #ff4444;
+      text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000;
+    }
+
+    strong {
+      color: #00ffcc;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Help to End the Wars and Save the World</h1>
-        <p>
-            I hold valuable information that “these people” do not want released. I refuse to resort to crime to fund my mission.  
-            Your donation will help me travel, stay safe, and bring truth to light. Every contribution helps me continue this critical work.  
-            Together, we can stand for peace and justice. 
-        </p>
-        <button onclick="showDonation()">Donate</button>
+  <!-- Animated background -->
+  <canvas id="bg"></canvas>
 
-        <div id="donation-info">
-            <p>Donations via Bitcoin to this Address:</p>
-            <div class="bitcoin-address">
-                bc1qt49pgxy0574t94qnz932aw83frfc627mvqmyyw
-            </div>
-            <p>Thank you for your Support to Save the World!</p>
-        </div>
+  <div class="container">
+    <!-- Page 1 -->
+    <div id="page1" class="page active">
+      <h1>PANAMA ALIEN</h1>
+      <h2>Buy Sample of the Panama Alien</h2>
+      <button class="btn" onclick="goToPage(2)">BUY</button>
     </div>
 
-    <script>
-        function showDonation() {
-            document.getElementById("donation-info").style.display = "block";
+    <!-- Page 2 -->
+    <div id="page2" class="page">
+      <h1>Order Information</h1>
+      <form id="orderForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="address" placeholder="Delivery Address" required>
+        <input type="email" id="email" placeholder="Email" required>
+      </form>
+      <p>Please Check Information Twice!</p>
+      <button class="btn" onclick="validateForm()">Continue</button>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page3" class="page">
+      <h1>Payment</h1>
+      <p>Ethereum Address:</p>
+      <p><strong>0xc7D01556a210A891DdD5EadFDCEA2637231B475D</strong></p>
+      <p><strong>CAUTION! Pay exactly 100 USDT to this Address!</strong></p>
+      <div id="timer">30:00</div>
+      <button class="btn" onclick="placeOrder()">Order</button>
+    </div>
+
+    <!-- Page 4 -->
+    <div id="page4" class="page">
+      <h1>Thank you for your Order!</h1>
+      <p>Your sample is on the Way!</p>
+    </div>
+  </div>
+
+  <script>
+    /* ======================
+       PAGE LOGIC
+    ====================== */
+    let formValid = false;
+    let countdown;
+
+    function goToPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+      if (num === 3) startTimer(30*60); // 30 minutes
+    }
+
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      if (name && address && email) {
+        formValid = true;
+        goToPage(3);
+      } else {
+        alert("Please fill out all fields before continuing!");
+      }
+    }
+
+    function startTimer(duration) {
+      let time = duration;
+      clearInterval(countdown);
+      countdown = setInterval(() => {
+        const minutes = String(Math.floor(time / 60)).padStart(2, '0');
+        const seconds = String(time % 60).padStart(2, '0');
+        document.getElementById('timer').textContent = minutes + ":" + seconds;
+        if (--time < 0) {
+          clearInterval(countdown);
+          document.getElementById('timer').textContent = "EXPIRED";
         }
-    </script>
+      }, 1000);
+    }
+
+    function placeOrder() {
+      if (formValid) {
+        goToPage(4);
+      } else {
+        alert("Order information not complete. Please go back and fill out all fields.");
+        goToPage(2);
+      }
+    }
+
+    /* ======================
+       BACKGROUND ANIMATION
+    ====================== */
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    let orbs = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    function createOrbs(num) {
+      orbs = [];
+      for (let i = 0; i < num; i++) {
+        orbs.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 3 + 2,
+          dx: (Math.random() - 0.5) * 0.5,
+          dy: (Math.random() - 0.5) * 0.5,
+          color: `hsla(${Math.random()*360}, 100%, 70%, 0.8)`
+        });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let orb of orbs) {
+        ctx.beginPath();
+        ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI*2);
+        ctx.fillStyle = orb.color;
+        ctx.shadowColor = orb.color;
+        ctx.shadowBlur = 20;
+        ctx.fill();
+
+        orb.x += orb.dx;
+        orb.y += orb.dy;
+
+        if (orb.x < 0 || orb.x > width) orb.dx *= -1;
+        if (orb.y < 0 || orb.y > height) orb.dy *= -1;
+      }
+      requestAnimationFrame(animate);
+    }
+
+    createOrbs(60); // number of glowing orbs
+    animate();
+  </script>
 </body>
 </html>
