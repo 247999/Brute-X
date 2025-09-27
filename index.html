@@ -23,7 +23,6 @@
       position: relative;
     }
 
-    /* Background Canvas */
     canvas#bg {
       position: fixed;
       top: 0;
@@ -33,7 +32,6 @@
       z-index: -1;
     }
 
-    /* Content Container */
     .container {
       text-align: center;
       padding: 20px;
@@ -75,13 +73,8 @@
       transform: scale(1.05);
     }
 
-    .page {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-    .active {
-      display: block;
-    }
+    .page { display: none; animation: fadeIn 0.5s ease; }
+    .active { display: block; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -100,13 +93,6 @@
       color: #fff;
       font-size: 1em;
       box-shadow: 0 0 8px #00ffcc55;
-      transition: border 0.3s, box-shadow 0.3s;
-    }
-
-    form input:focus {
-      border-color: #00ffcc;
-      outline: none;
-      box-shadow: 0 0 12px #00ffcc;
     }
 
     #timer {
@@ -123,7 +109,6 @@
   </style>
 </head>
 <body>
-  <!-- Animated background -->
   <canvas id="bg"></canvas>
 
   <div class="container">
@@ -131,7 +116,7 @@
     <div id="page1" class="page active">
       <h1>PANAMA ALIEN</h1>
       <h2>Buy Sample of the Panama Alien</h2>
-      <button class="btn" onclick="goToPage(2)">BUY</button>
+      <button class="btn" onclick="goToPage(2); speak('please enter your delivery address');">BUY</button>
     </div>
 
     <!-- Page 2 -->
@@ -168,6 +153,32 @@
 
   <script>
     /* ======================
+       SPEECH FUNCTION
+    ====================== */
+    function speak(text) {
+      if (!window.speechSynthesis) return;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-US";
+      utter.pitch = 1;
+      utter.rate = 1;
+      // versuche weibliche Stimme zu wählen
+      const voices = speechSynthesis.getVoices();
+      const female = voices.find(v => v.name.toLowerCase().includes("female") || v.name.toLowerCase().includes("woman"));
+      if (female) utter.voice = female;
+      else {
+        const enVoice = voices.find(v => v.lang.startsWith("en"));
+        if (enVoice) utter.voice = enVoice;
+      }
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    window.speechSynthesis.onvoiceschanged = () => {
+      // beim Laden einmal Begrüßung
+      speak("welcome! you're on the panama shop");
+    };
+
+    /* ======================
        PAGE LOGIC
     ====================== */
     let formValid = false;
@@ -176,7 +187,10 @@
     function goToPage(num) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page' + num).classList.add('active');
-      if (num === 3) startTimer(30*60); // 30 minutes
+      if (num === 3) {
+        speak("please pay the exact amount to this address");
+        startTimer(30*60);
+      }
     }
 
     function validateForm() {
@@ -231,7 +245,6 @@
     window.addEventListener("resize", resize);
     resize();
 
-    // Create stars
     function createStars(num) {
       stars = [];
       for (let i = 0; i < num; i++) {
@@ -245,7 +258,6 @@
       }
     }
 
-    // Shooting star generator
     function spawnShootingStar() {
       shootingStars.push({
         x: Math.random() * width,
@@ -299,11 +311,7 @@
     function animate() {
       drawStars();
       drawShootingStars();
-
-      if (Math.random() < 0.01) { // chance to spawn a shooting star
-        spawnShootingStar();
-      }
-
+      if (Math.random() < 0.01) spawnShootingStar();
       requestAnimationFrame(animate);
     }
 
