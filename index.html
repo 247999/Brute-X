@@ -1,322 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PANAMA ALIEN</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TrueChance Coin</title>
   <style>
-    /* Reset & Base */
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
-    }
-
     body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
       background: #000;
-      color: #e0fff9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      position: relative;
+      overflow: hidden;
     }
 
-    canvas#bg {
+    /* Starfield background */
+    canvas#stars {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: -1;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      background: black;
     }
 
-    .container {
+    header {
       text-align: center;
-      padding: 20px;
-      max-width: 500px;
-      width: 90%;
-      z-index: 1;
+      padding: 80px 20px 40px 20px;
     }
 
-    h1 {
-      font-size: 3em;
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    header h1 {
+      font-size: 4em;
+      color: #00e0ff;
+      text-shadow: 0 0 20px #00faff;
       margin-bottom: 10px;
     }
 
-    h2, p {
-      color: #cceee8;
-      margin-bottom: 20px;
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(0, 0, 20, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
     }
 
-    .btn {
+    section h2 {
+      color: #00faff;
+      margin-bottom: 15px;
+    }
+
+    section p {
+      line-height: 1.7em;
+      font-size: 1.1em;
+    }
+
+    .button-container {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .buy-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 1.2em;
-      background: #00ffcc;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
+      background: #00faff;
       color: #000;
+      padding: 15px 40px;
+      font-size: 1.2em;
       font-weight: bold;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px #00ffcc;
-    }
-
-    .btn:hover {
-      background: #00ccaa;
-      box-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc;
-      transform: scale(1.05);
-    }
-
-    .page { display: none; animation: fadeIn 0.5s ease; }
-    .active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    form input {
-      display: block;
-      margin: 12px auto;
-      padding: 12px;
-      width: 100%;
-      max-width: 350px;
       border-radius: 8px;
-      border: 1px solid #00ffcc;
-      background: #111;
-      color: #fff;
-      font-size: 1em;
-      box-shadow: 0 0 8px #00ffcc55;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
 
-    #timer {
-      font-size: 2em;
-      margin: 15px 0;
-      color: #ff4444;
-      text-shadow: 0 0 10px #ff4444, 0 0 20px #ff0000;
+    .buy-button:hover {
+      background: #00b5cc;
     }
 
-    strong {
-      color: #00ffcc;
-      text-shadow: 0 0 5px #00ffcc;
+    /* X (Twitter) button */
+    .x-button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #000;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .x-button:hover {
+      transform: scale(1.1);
+    }
+
+    .x-button svg {
+      fill: #fff;
+      width: 24px;
+      height: 24px;
     }
   </style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
+  <canvas id="stars"></canvas>
 
-  <div class="container">
-    <!-- Page 1 -->
-    <div id="page1" class="page active">
-      <h1>PANAMA ALIEN</h1>
-      <h2>Buy Sample of the Panama Alien</h2>
-      <button class="btn" onclick="goToPage(2); speak('please enter your delivery address');">BUY</button>
-    </div>
+  <header>
+    <h1>TrueChance</h1>
+  </header>
 
-    <!-- Page 2 -->
-    <div id="page2" class="page">
-      <h1>Order Information</h1>
-      <form id="orderForm">
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="text" id="address" placeholder="Delivery Address" required>
-        <input type="email" id="email" placeholder="Email" required>
-      </form>
-      <p>Please Check Information Twice!</p>
-      <button class="btn" onclick="validateForm()">Continue</button>
-    </div>
+  <section>
+    <h2>What is TrueChance?</h2>
+    <p>
+      TrueChance is a revolutionary crypto project built for fairness, transparency, and excitement. 
+      Each week, <strong>5% of the creator rewards</strong> are randomly awarded to one of the holders. 
+    </p>
+    <p>
+      The lucky winner will be contacted directly on <strong>pump.fun</strong> and has 24 hours to respond. 
+      If they don’t respond, the prize rolls over to the next raffle, ensuring fairness for everyone.
+    </p>
+    <p>
+      All transactions are transparent, and the raffle process is designed to be professional and serious. 
+      TrueChance isn’t just another coin — it’s about building a community where holding gives you a real chance to win.
+    </p>
 
-    <!-- Page 3 -->
-    <div id="page3" class="page">
-      <h1>Payment</h1>
-      <p>Bitcoin Address:</p>
-      <p><strong>bc1qt49pgxy0574t94qnz932aw83frfc627mvqmyyw</strong></p>
-      <p><strong>CAUTION! Pay exactly 100$ of Bitcoin to this Address!</strong></p>
-      <div id="timer">30:00</div>
-      <p style="color:#ff6666; font-weight:bold; text-shadow:0 0 10px #ff0000;">
-        Order will only be delivered if Payment has been made!
-      </p>
-      <button class="btn" onclick="placeOrder()">Order</button>
+    <div class="button-container">
+      <a href="#" class="buy-button">Buy TrueChance</a>
     </div>
+  </section>
 
-    <!-- Page 4 -->
-    <div id="page4" class="page">
-      <h1>Thank you for your Order!</h1>
-      <p>Your sample is on the Way!</p>
-    </div>
-  </div>
+  <!-- X (Twitter) button -->
+  <a href="https://x.com/truechancecoin?s=21" target="_blank" class="x-button" aria-label="TrueChance on X">
+    <svg viewBox="0 0 24 24">
+      <path d="M18.36 2H21.16L14.44 10.09L22.5 22H15.9L10.95 14.72L5.28 22H2.5L9.78 13.32L2 2H8.75L13.21 8.59L18.36 2ZM17.21 20H19.03L7.22 4H5.26L17.21 20Z"/>
+    </svg>
+  </a>
 
   <script>
-    /* ======================
-       SPEECH FUNCTION
-    ====================== */
-    function speak(text) {
-      if (!window.speechSynthesis) return;
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "en-US";
-      utter.pitch = 1;
-      utter.rate = 1;
-      // versuche weibliche Stimme zu wählen
-      const voices = speechSynthesis.getVoices();
-      const female = voices.find(v => v.name.toLowerCase().includes("female") || v.name.toLowerCase().includes("woman"));
-      if (female) utter.voice = female;
-      else {
-        const enVoice = voices.find(v => v.lang.startsWith("en"));
-        if (enVoice) utter.voice = enVoice;
-      }
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utter);
-    }
-
-    window.speechSynthesis.onvoiceschanged = () => {
-      // beim Laden einmal Begrüßung
-      speak("welcome! you're on the panama shop");
-    };
-
-    /* ======================
-       PAGE LOGIC
-    ====================== */
-    let formValid = false;
-    let countdown;
-
-    function goToPage(num) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page' + num).classList.add('active');
-      if (num === 3) {
-        speak("please pay the exact amount to this address");
-        startTimer(30*60);
-      }
-    }
-
-    function validateForm() {
-      const name = document.getElementById('name').value.trim();
-      const address = document.getElementById('address').value.trim();
-      const email = document.getElementById('email').value.trim();
-
-      if (name && address && email) {
-        formValid = true;
-        goToPage(3);
-      } else {
-        alert("Please fill out all fields before continuing!");
-      }
-    }
-
-    function startTimer(duration) {
-      let time = duration;
-      clearInterval(countdown);
-      countdown = setInterval(() => {
-        const minutes = String(Math.floor(time / 60)).padStart(2, '0');
-        const seconds = String(time % 60).padStart(2, '0');
-        document.getElementById('timer').textContent = minutes + ":" + seconds;
-        if (--time < 0) {
-          clearInterval(countdown);
-          document.getElementById('timer').textContent = "EXPIRED";
-        }
-      }, 1000);
-    }
-
-    function placeOrder() {
-      if (formValid) {
-        goToPage(4);
-      } else {
-        alert("Order information not complete. Please go back and fill out all fields.");
-        goToPage(2);
-      }
-    }
-
-    /* ======================
-       STARFIELD BACKGROUND
-    ====================== */
-    const canvas = document.getElementById("bg");
+    // Starry background with shooting stars
+    const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
-    let width, height;
-    let stars = [];
-    let shootingStars = [];
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    const stars = [];
+    const shootingStars = [];
+
+    function Star(x, y, size, speed) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.speed = speed;
     }
-    window.addEventListener("resize", resize);
-    resize();
 
-    function createStars(num) {
-      stars = [];
-      for (let i = 0; i < num; i++) {
-        stars.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 1.5,
-          alpha: Math.random(),
-          dAlpha: (Math.random() * 0.02) + 0.005
-        });
+    function ShootingStar() {
+      this.x = Math.random() * canvas.width;
+      this.y = 0;
+      this.len = Math.random() * 80 + 10;
+      this.speed = Math.random() * 10 + 6;
+      this.angle = Math.PI / 4;
+      this.opacity = 1;
+    }
+
+    function createStars(count) {
+      for (let i = 0; i < count; i++) {
+        stars.push(
+          new Star(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            Math.random() * 2,
+            Math.random() * 0.5
+          )
+        );
       }
-    }
-
-    function spawnShootingStar() {
-      shootingStars.push({
-        x: Math.random() * width,
-        y: Math.random() * height * 0.5,
-        length: Math.random() * 80 + 50,
-        speed: Math.random() * 10 + 6,
-        opacity: 1
-      });
     }
 
     function drawStars() {
-      ctx.fillStyle = "#000";
-      ctx.fillRect(0, 0, width, height);
-
-      for (let star of stars) {
+      ctx.fillStyle = "white";
+      stars.forEach(star => {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
+      });
+    }
 
-        star.alpha += star.dAlpha;
-        if (star.alpha <= 0 || star.alpha >= 1) {
-          star.dAlpha = -star.dAlpha;
+    function updateStars() {
+      stars.forEach(star => {
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
         }
-      }
+      });
     }
 
     function drawShootingStars() {
-      for (let i = shootingStars.length - 1; i >= 0; i--) {
-        let s = shootingStars[i];
+      shootingStars.forEach((s, i) => {
+        ctx.strokeStyle = `rgba(255,255,255,${s.opacity})`;
         ctx.beginPath();
-        let grad = ctx.createLinearGradient(s.x, s.y, s.x - s.length, s.y + s.length);
-        grad.addColorStop(0, `rgba(255,255,255,${s.opacity})`);
-        grad.addColorStop(1, "rgba(255,255,255,0)");
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 2;
         ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x - s.length, s.y + s.length);
+        ctx.lineTo(
+          s.x - s.len * Math.cos(s.angle),
+          s.y - s.len * Math.sin(s.angle)
+        );
         ctx.stroke();
-
-        s.x += -s.speed;
-        s.y += s.speed;
-        s.opacity -= 0.02;
-
+        s.x += s.speed * Math.cos(s.angle);
+        s.y += s.speed * Math.sin(s.angle);
+        s.opacity -= 0.01;
         if (s.opacity <= 0) {
           shootingStars.splice(i, 1);
         }
-      }
+      });
     }
 
     function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      updateStars();
       drawStars();
       drawShootingStars();
-      if (Math.random() < 0.01) spawnShootingStar();
+      if (Math.random() < 0.005) {
+        shootingStars.push(new ShootingStar());
+      }
       requestAnimationFrame(animate);
     }
 
     createStars(200);
     animate();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
