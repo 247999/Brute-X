@@ -969,10 +969,14 @@
     }
 
     function goToCheckout() {
-      if (!selectedOptionId) return;
-      updateCheckoutSummary();
-      showPage("page-checkout");
-    }
+  // Sicherheitsfallback: wenn nichts ausgewählt ist, nimm den Bestseller
+  if (!selectedOptionId) {
+    selectedOptionId = "opt-200"; // 100x 200€ (Bestseller)
+  }
+
+  updateCheckoutSummary();
+  showPage("page-checkout");
+}
 
     function completeOrder() {
       const emailInput = document.getElementById("email");
