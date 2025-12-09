@@ -726,7 +726,7 @@
           <div class="product-name-big">EURO</div>
         </div>
         <div class="product-info">
-          <h2>test</h2>
+          <h2>EUR BILLS</h2>
           <div class="rating-row">
             <div class="stars">
               <span class="star">⭐</span>
@@ -776,7 +776,7 @@
             type="button"
             onclick="goToOptions(event)"
           >
-            View test variants
+            View EUR Bills
           </button>
         </div>
       </div>
@@ -861,8 +861,8 @@
             <strong>BTC Address:</strong> <span id="btc-address">bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz</span>
           </div>
           <div class="note">
-            This is a test setup. Always double-check details in real payment
-            flows.
+             Always double-check details in payments
+            .
           </div>
         </div>
 
@@ -977,7 +977,7 @@
     function completeOrder() {
       const emailInput = document.getElementById("email");
       if (!emailInput.value) {
-        alert("Please enter a valid email address for this test order.");
+        alert("Please enter a valid email address for this order.");
         emailInput.focus();
         return;
       }
@@ -1068,7 +1068,7 @@
           updateCheckoutSummary();
         }
       } catch (e) {
-        console.warn("Failed to fetch BTC rate (test only):", e);
+        console.warn("Failed to fetch BTC rate :", e);
       }
     }
 
