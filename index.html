@@ -1,260 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>UltraSpin™ — Luxury Chance Platform</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accelera - AI-Powered Startup Accelerator</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', sans-serif; }
+    body { background: #f8f9fa; color: #1A2F6C; line-height: 1.6; }
 
-<style>
-:root {
-    --gold: #d4b15f;
-    --dark: #0b0b0b;
-    --card: #121212;
-    --border: #242424;
-    --text: #f1f1f1;
-    --muted: #9a9a9a;
-}
+    /* Containers */
+    .container { width: 90%; max-width: 1200px; margin: auto; }
 
-* {
-    box-sizing: border-box;
-}
+    /* Header / Hero */
+    header { background: #1A2F6C; color: #fff; padding: 80px 0; text-align: center; }
+    header h1 { font-size: 3rem; margin-bottom: 20px; }
+    header p { font-size: 1.2rem; margin-bottom: 30px; }
+    .btn-primary { background: #00FFD5; color: #1A2F6C; padding: 15px 30px; font-weight: bold; text-decoration: none; border-radius: 5px; transition: 0.3s; }
+    .btn-primary:hover { background: #00bfa5; color: #fff; }
 
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-    background: radial-gradient(circle at top, #161616, #000 65%);
-    color: var(--text);
-}
+    /* Sections */
+    section { padding: 80px 0; }
+    section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+    section p { max-width: 800px; margin: 10px auto; text-align: center; }
 
-header {
-    padding: 50px 20px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-}
+    /* Features */
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 40px; }
+    .feature { flex: 1 1 250px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+    .feature:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    .feature h3 { margin-bottom: 15px; color: #1A2F6C; }
+    .feature p { color: #333; }
 
-header h1 {
-    font-size: 3em;
-    margin: 0;
-    letter-spacing: 1px;
-}
+    /* CTA */
+    .cta { background: #00FFD5; color: #1A2F6C; text-align: center; padding: 60px 0; }
+    .cta h2 { font-size: 2rem; margin-bottom: 20px; }
+    .cta p { font-size: 1.1rem; margin-bottom: 30px; }
 
-header p {
-    margin-top: 10px;
-    color: var(--muted);
-}
+    /* Footer */
+    footer { background: #1A2F6C; color: #fff; text-align: center; padding: 30px 0; font-size: 0.9rem; }
+    a { color: inherit; text-decoration: none; }
 
-main {
-    max-width: 1100px;
-    margin: auto;
-    padding: 40px 20px;
-}
-
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 30px;
-    margin-bottom: 40px;
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-.button {
-    background: linear-gradient(135deg, var(--gold), #f5e19c);
-    color: #000;
-    border: none;
-    border-radius: 12px;
-    padding: 15px 32px;
-    font-size: 1em;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.button:hover {
-    opacity: 0.92;
-}
-
-.center {
-    text-align: center;
-}
-
-.wheel {
-    width: 280px;
-    height: 280px;
-    margin: 30px auto;
-    border-radius: 50%;
-    border: 10px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4em;
-    font-weight: 600;
-    background: #000;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 14px;
-    border-bottom: 1px solid var(--border);
-}
-
-th {
-    text-align: left;
-    color: var(--muted);
-}
-
-input {
-    width: 100%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: #000;
-    color: var(--text);
-    font-size: 0.95em;
-}
-
-.warning {
-    color: #ffcc66;
-    font-size: 0.9em;
-}
-
-footer {
-    border-top: 1px solid var(--border);
-    padding: 40px 20px;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85em;
-}
-</style>
+    /* Responsive */
+    @media(max-width: 768px) {
+      header h1 { font-size: 2.2rem; }
+      section h2 { font-size: 1.6rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-<h1>UltraSpin™</h1>
-<p>High-risk luxury chance. Fully transparent odds. No account required.</p>
-</header>
+  <!-- Hero -->
+  <header>
+    <div class="container">
+      <h1>Accelera</h1>
+      <p>Accelerate Ideas. Launch Success. The AI-powered global startup accelerator for founders and investors.</p>
+      <a href="#contact" class="btn-primary">Request Early Access</a>
+    </div>
+  </header>
 
-<main>
+  <!-- Problem Section -->
+  <section id="problem">
+    <div class="container">
+      <h2>The Problem</h2>
+      <p>Most early-stage founders fail not because of bad ideas, but due to lack of guidance, market validation, and access to investors. Traditional accelerators are slow, selective, and geographically limited.</p>
+    </div>
+  </section>
 
-<div class="card">
-<h2>How UltraSpin Works</h2>
-<p>
-Each spin costs <strong>€10 worth of Bitcoin</strong>.  
-Spins are random and independent.
-</p>
-<p>
-Most spins result in no prize.  
-Some spins win small or medium prizes.  
-One extremely rare spin may win the <strong>Ultimate Prize</strong>.
-</p>
-<p class="warning">
-⚠ This is a high-risk chance-based game.  
-Do not play if you cannot afford to lose.
-</p>
-</div>
+  <!-- Solution Section -->
+  <section id="solution" style="background:#e0f7f4;">
+    <div class="container">
+      <h2>Our Solution</h2>
+      <p>Accelera automates the accelerator process with AI:</p>
+      <div class="features">
+        <div class="feature">
+          <h3>Idea Validation</h3>
+          <p>Analyze market size, competition, regulatory hurdles, and potential revenue automatically.</p>
+        </div>
+        <div class="feature">
+          <h3>Growth Roadmaps</h3>
+          <p>Step-by-step 12–24 week action plan for MVP, user acquisition, and fundraising.</p>
+        </div>
+        <div class="feature">
+          <h3>Investor Connections</h3>
+          <p>Curated AI recommendations to connect founders with relevant investors and mentors globally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="card">
-<h2>Prize Odds (Disclosed)</h2>
-<table>
-<tr>
-<th>Prize</th>
-<th>Estimated Value</th>
-<th>Win Chance</th>
-</tr>
-<tr>
-<td>Bugatti Chiron</td>
-<td>≈ €3,000,000</td>
-<td>1 in 10,000,000</td>
-</tr>
-<tr>
-<td>Luxury Prize</td>
-<td>€1,000</td>
-<td>1 in 50,000</td>
-</tr>
-<tr>
-<td>Small Prize</td>
-<td>€100</td>
-<td>1 in 2,000</td>
-</tr>
-<tr>
-<td>Tiny Prize</td>
-<td>€10</td>
-<td>1 in 100</td>
-</tr>
-<tr>
-<td>No Prize</td>
-<td>€0</td>
-<td>Remaining spins</td>
-</tr>
-</table>
-</div>
+  <!-- Traction / MVP -->
+  <section id="traction">
+    <div class="container">
+      <h2>Traction & MVP</h2>
+      <p>Validated with 10 early-stage founders willing to pay $200/month. MVP ready in 90 days, first paying users expected in 120 days.</p>
+    </div>
+  </section>
 
-<div class="card center">
-<h2>Spin Demo</h2>
-<div class="wheel" id="wheel">READY</div>
-<button class="button" onclick="spin()">Spin (Demo)</button>
-<p style="margin-top:12px;color:var(--muted);">
-Demo spins do not involve real money.
-</p>
-</div>
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>Become Part of the Future of Startup Acceleration</h2>
+      <p>Invest or join as a founder today and gain early access to Accelera’s AI-powered platform.</p>
+      <a href="mailto:accelerainvest@gmail.com" class="btn-primary">Contact Us</a>
+    </div>
+  </section>
 
-<div class="card">
-<h2>Bitcoin Payment</h2>
-<p>
-Send exactly <strong>€10 worth of BTC</strong> to the address below.
-</p>
-
-<input readonly value="bc1pmcj6n8xyd7xt6ww96afv434yqs7ggac77a70qyqdfxxd5mzlvdcsle537z">
-
-<p style="margin-top:12px;color:var(--muted);">
-After blockchain confirmation, one spin will be credited automatically.  
-(Backend integration required.)
-</p>
-</div>
-
-<div class="card">
-<h2>Legal & Responsible Play</h2>
-<ul>
-<li>18 years or older only</li>
-<li>Pure chance — no skill involved</li>
-<li>No guaranteed winnings</li>
-<li>No refunds</li>
-<li>Odds are fixed and published</li>
-<li>This is not an investment or income opportunity</li>
-<li>Prizes subject to verification and availability</li>
-</ul>
-</div>
-
-</main>
-
-<footer>
-<p>
-UltraSpin™ is an entertainment platform involving financial risk.  
-If you believe you may have a gambling problem, seek professional help.
-</p>
-</footer>
-
-<script>
-function spin() {
-    const wheel = document.getElementById("wheel");
-    wheel.innerText = "SPINNING...";
-    setTimeout(() => {
-        const r = Math.random();
-        if (r < 0.0000001) wheel.innerText = "BUGATTI";
-        else if (r < 0.00002) wheel.innerText = "€1,000";
-        else if (r < 0.0005) wheel.innerText = "€100";
-        else if (r < 0.01) wheel.innerText = "€10";
-        else wheel.innerText = "NO WIN";
-    }, 1500);
-}
-</script>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; 2026 Accelera. All Rights Reserved.
+    </div>
+  </footer>
 
 </body>
 </html>
