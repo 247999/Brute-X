@@ -520,7 +520,156 @@ align-items:flex-start;
 
 
 }
+/* Advanced responsive layout */
 
+html {
+    scroll-behavior: smooth;
+}
+
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+
+.container {
+    width: min(95%, 950px);
+    margin:auto;
+}
+
+
+.section {
+    width:100%;
+}
+
+
+@media (max-width:900px){
+
+    body {
+        padding:25px 15px;
+    }
+
+    h1 {
+        font-size:38px;
+    }
+
+    h2 {
+        font-size:24px;
+    }
+
+    .section {
+        padding:25px;
+        border-radius:18px;
+    }
+
+    .crypto {
+        gap:15px;
+        padding:20px;
+    }
+
+}
+
+
+@media (max-width:600px){
+
+    body {
+        padding:15px 10px;
+    }
+
+
+    .toggle {
+
+        top:15px;
+        right:15px;
+
+        padding:10px 14px;
+
+    }
+
+
+    .hero {
+
+        padding:40px 10px;
+
+    }
+
+
+    h1 {
+
+        font-size:30px;
+        line-height:1.2;
+
+    }
+
+
+    .subtitle {
+
+        font-size:15px;
+
+    }
+
+
+    .section {
+
+        padding:20px;
+
+    }
+
+
+    .crypto img {
+
+        width:45px;
+        height:45px;
+
+    }
+
+
+    .crypto-name {
+
+        font-size:18px;
+
+    }
+
+
+    .address {
+
+        font-size:12px;
+
+    }
+
+
+    .actions button {
+
+        width:100%;
+
+    }
+
+
+    .actions {
+
+        width:100%;
+
+    }
+
+
+    .qr {
+
+        display:block;
+        width:max-content;
+        margin:20px auto 0;
+
+    }
+
+
+    .hero-buttons a {
+
+        width:100%;
+        text-align:center;
+
+    }
+
+}
 </style>
 
 </head>
