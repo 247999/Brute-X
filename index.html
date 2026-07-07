@@ -3,287 +3,915 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE FILE </title>
+
+<title>Support My Recovery</title>
+
+<meta name="description" content="A voluntary cryptocurrency donation page to support my recovery from legal and financial difficulties.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <style>
+.hero{
+
+text-align:center;
+padding:60px 20px;
+
+}
+
+
+.badge{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:50px;
+
+background:rgba(88,166,255,.15);
+
+border:1px solid rgba(88,166,255,.3);
+
+color:var(--accent);
+
+font-size:13px;
+
+font-weight:600;
+
+letter-spacing:1px;
+
+margin-bottom:25px;
+
+}
+
+
+
+.hero h1{
+
+max-width:800px;
+
+margin:auto;
+
+}
+
+
+
+.hero-buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+margin-top:35px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.hero-buttons a{
+
+text-decoration:none;
+
+background:var(--accent);
+
+color:white;
+
+padding:14px 28px;
+
+border-radius:12px;
+
+font-weight:600;
+
+transition:.2s;
+
+}
+
+
+
+.hero-buttons a:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+.contact-card{
+
+text-align:center;
+
+}
+
+
+
+.instagram{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-top:20px;
+
+padding:15px 25px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,.08);
+
+border:1px solid var(--border);
+
+color:var(--text);
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+
+
+.disclaimer{
+
+font-size:13px;
+
+line-height:1.7;
+
+margin-top:20px;
+
+color:var(--muted);
+
+}
+
+:root {
+    --bg:#080b12;
+    --card:rgba(255,255,255,0.08);
+    --border:rgba(255,255,255,0.12);
+    --text:#ffffff;
+    --muted:#a1a1aa;
+    --accent:#58a6ff;
+}
+
+.light {
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --text:#111827;
+    --muted:#6b7280;
+}
+
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
+
+
 body{
-    font-family:Segoe UI, Arial, sans-serif;
-    background:
-    radial-gradient(circle at top,#1a1f2e 0%,#090909 40%,#030303 100%);
-    color:white;
-    overflow-x:hidden;
-}
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-    repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 80px,
-        rgba(255,255,255,.02) 81px
-    );
-    pointer-events:none;
-}
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-.hero{
+
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
     min-height:100vh;
     display:flex;
     justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-.hero h1{
-    font-size:5rem;
-    letter-spacing:10px;
-    margin-bottom:20px;
-    text-shadow:0 0 30px rgba(255,255,255,.15);
-}
-.hero p{
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-    color:#d5d5d5;
-}
-.demo-banner{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    z-index:999;
-    background:#b8860b;
-    color:black;
-    text-align:center;
-    padding:12px;
-    font-weight:bold;
-}
-.card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
-    border-radius:20px;
-    padding:40px;
-    margin:30px auto;
-}
-.section-title{
-    text-align:center;
-    margin-bottom:25px;
-    font-size:2rem;
-}
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.feature{
-    background:rgba(255,255,255,.03);
-    padding:25px;
-    border-radius:15px;
-}
-.feature h3{
-    margin-bottom:10px;
-}
-.price{
-    text-align:center;
-    margin-top:25px;
-}
-.price h2{
-    font-size:3rem;
-    margin-bottom:15px;
-}
-.buy-btn{
-    padding:18px 40px;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:1.1rem;
-    background:white;
-    color:black;
-    font-weight:bold;
+    padding:40px 20px;
     transition:.3s;
-}
-.buy-btn:hover{
-    transform:translateY(-3px);
-}
-.review-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-.review{
-    background:rgba(255,255,255,.04);
-    padding:25px;
-    border-radius:15px;
-}
-.review small{
-    color:#999;
-}
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.85);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:1000;
-}
-.modal-content{
-    width:90%;
-    max-width:650px;
-    background:#111;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
-}
-.address{
-    margin:20px 0;
-    padding:15px;
-    background:#1d1d1d;
-    border-radius:10px;
-    font-family:monospace;
-    font-size:1.2rem;
-}
-.close-btn{
-    margin-top:20px;
-    padding:12px 25px;
-    border:none;
-    cursor:pointer;
-    border-radius:10px;
-}
-.warning{
-    color:#ffd76d;
-    margin-top:15px;
-    font-size:.9rem;
-}
-footer{
-    text-align:center;
-    padding:50px;
-    color:#777;
-}
-</style>
-</head>
-<body>
-<div class="demo-banner">
-HUSTLERS ONLY — 100% RICH GUARANTEE IF STEPS DONE CORRECTLY
-</div>
-<section class="hero">
-    <div class="container">
-        <h1>THE FILE</h1>
-        <p>
-            THE FILE is a premium digital download designed for individuals interested in learning unconventional ideas, business concepts, productivity methods, and wealth-building frameworks.
-        </p>
-    </div>
-</section>
-<div class="container">
-<div class="card">
-    <h2 class="section-title">Product Overview</h2>
-    <div class="features">
-        <div class="feature">
-            <h3>Exclusive Content</h3>
-            <p>
-                NOONE ELSE will share these Informations with you!
-            </p>
-        </div>
-        <div class="feature">
-            <h3>Digital Delivery</h3>
-            <p>
-                THE FILE as an instant Download.
-            </p>
-        </div>
-        <div class="feature">
-            <h3>Premium Access</h3>
-            <p>
-                <100 Downloads Left!
-            </p>
-        </div>
-    </div>
-    <div class="price">
-        <h2>$50</h2>
-        <button class="buy-btn" onclick="openModal()">
-            Buy Now 
-        </button>
-    </div>
-</div>
-<div class="card">
-    <h2 class="section-title">Reviews</h2>
-    <div class="review-grid">
-        <div class="review">
-            ★★★★★
-            <p>
-                Best 50$ spent EVER!
-            </p>
-            <small> Review #217</small>
-        </div>
-        <div class="review">
-            ★★★★★
-            <p>
-                Bought it a Week ago n now im up 5k i rly fwu , love 
-            </p>
-            <small> Review #12</small>
-        </div>
-        <div class="review">
-            ★★★★★
-            <p>
-                Looks good i will keep you Guys updated
-            </p>
-            <small> Review #133</small>
-        </div>
-    </div>
-</div>
-<div class="card">
-    <h2 class="section-title">Legal Notice</h2>
-    <p style="line-height:1.8;">
-         This product is intended for informational and educational purposes only. No earnings, financial outcomes, or business results are promised or guaranteed. NO WORK PUT IN = BAD RESULTS!
 
-    </p>
+}
+
+
+.container{
+
+    width:100%;
+    max-width:950px;
+
+}
+
+
+header{
+
+    text-align:center;
+    margin-bottom:45px;
+
+}
+
+
+h1{
+
+    font-size:48px;
+    font-weight:700;
+    letter-spacing:-1px;
+
+}
+
+
+.subtitle{
+
+    margin-top:15px;
+    color:var(--muted);
+    font-size:18px;
+
+}
+
+
+.toggle{
+
+    position:fixed;
+    top:25px;
+    right:25px;
+
+    background:var(--card);
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    padding:12px 18px;
+    border-radius:50px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(15px);
+
+}
+
+
+
+.section{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:35px;
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+
+
+    opacity:0;
+    transform:translateY(30px);
+    animation:show .8s forwards;
+
+}
+
+
+.section:nth-child(3){
+animation-delay:.15s;
+}
+
+
+.section:nth-child(4){
+animation-delay:.3s;
+}
+
+
+@keyframes show{
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+
+
+h2{
+
+font-size:28px;
+margin-bottom:20px;
+
+}
+
+
+
+p{
+
+line-height:1.8;
+color:var(--muted);
+
+}
+
+
+.highlight{
+
+color:var(--accent);
+font-weight:600;
+
+}
+
+
+
+.crypto{
+
+display:flex;
+align-items:center;
+gap:25px;
+
+padding:25px;
+
+margin-top:20px;
+
+background:rgba(0,0,0,.15);
+
+border-radius:18px;
+
+border:1px solid var(--border);
+
+transition:.25s;
+
+}
+
+
+.crypto:hover{
+
+transform:translateY(-5px);
+
+border-color:var(--accent);
+
+}
+
+
+
+.crypto img{
+
+width:55px;
+height:55px;
+
+}
+
+
+
+.crypto-info{
+
+flex:1;
+
+}
+
+
+.crypto-name{
+
+font-size:20px;
+font-weight:600;
+
+}
+
+
+
+.address{
+
+font-family:monospace;
+
+font-size:14px;
+
+word-break:break-all;
+
+margin-top:8px;
+
+color:var(--accent);
+
+}
+
+
+
+.actions{
+
+margin-top:15px;
+
+display:flex;
+
+gap:10px;
+
+}
+
+
+
+button{
+
+background:var(--accent);
+
+border:none;
+
+color:white;
+
+padding:10px 18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+}
+
+
+
+.qr{
+
+margin-top:20px;
+
+background:white;
+
+padding:10px;
+
+display:inline-block;
+
+border-radius:12px;
+
+}
+
+
+
+.progress{
+
+margin-top:25px;
+
+height:15px;
+
+background:rgba(255,255,255,.15);
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+
+.progress-bar{
+
+height:100%;
+
+width:0%;
+
+background:var(--accent);
+
+animation:progress 2s forwards;
+
+}
+
+
+@keyframes progress{
+
+from{
+width:0%;
+}
+
+to{
+width:35%;
+}
+
+}
+
+
+
+.footer{
+
+text-align:center;
+
+color:var(--muted);
+
+padding:30px;
+
+font-size:14px;
+
+}
+
+
+
+@media(max-width:700px){
+
+
+h1{
+
+font-size:34px;
+
+}
+
+
+.section{
+
+padding:25px;
+
+}
+
+
+.crypto{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+
+
+}
+
+</style>
+
+</head>
+
+
+<!-- Ethereum -->
+
+<div class="crypto">
+
+<img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=040">
+
+<div class="crypto-info">
+
+<div class="crypto-name">
+Ethereum (ETH)
 </div>
+
+<div class="address">
+0xc7D01556a210A891DdD5EadFDCEA2637231B475D
 </div>
-<div class="modal" id="modal">
-    <div class="modal-content">
-        <h2> Payment Window</h2>
-        <p>
-             THEFILE Payment address:
-        </p>
-        <div class="address">
-            bc1qaxmgjg2nhlqyr5tyqzqglmr48tshwa0j9vz8hz
-        </div>
-        <p>
-            Send the required payment amount to the address above. Payment processing and confirmation times may vary. Access to the download will be provided after payment verification.
-        </p>
-        <p class="warning">
-              Please be careful to use ONLY this and EXACTLY this Adress. No refunds for lost funds if the Adress is not correctly copied.
-        </p>
-        <button class="close-btn" onclick="closeModal()">
-            Close
-        </button>
-    </div>
+
+<div class="actions">
+
+<button onclick="copyText('0xc7D01556a210A891DdD5EadFDCEA2637231B475D')">
+Copy
+</button>
+
 </div>
-<footer>
-© THE FILE — 2026
-</footer>
+
+<div class="qr" id="eth"></div>
+
+</div>
+
+</div>
+
+
+
+<!-- Solana -->
+
+<div class="crypto">
+
+<img src="https://cryptologos.cc/logos/solana-sol-logo.svg?v=040">
+
+<div class="crypto-info">
+
+<div class="crypto-name">
+Solana (SOL)
+</div>
+
+<div class="address">
+6EqqG1Yc6SzQt1JcDfk7E6YksmqDxWaddnyUro4J9RFS
+</div>
+
+<div class="actions">
+
+<button onclick="copyText('6EqqG1Yc6SzQt1JcDfk7E6YksmqDxWaddnyUro4J9RFS')">
+Copy
+</button>
+
+</div>
+
+<div class="qr" id="sol"></div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+Every donation, regardless of size, is sincerely appreciated ❤️
+
+<br><br>
+
+Thank you for your support.
+
+</div>
+
+<div class="section contact-card" id="contact">
+
+<h2>
+Contact
+</h2>
+
+<p>
+For updates, questions, or simply to follow my journey, you can find me on Instagram.
+</p>
+
+
+<a class="instagram" 
+href="https://www.instagram.com/lukasprolenko/" 
+target="_blank">
+
+📸 @lukasprolenko
+
+</a>
+
+
+</div>
+
+
+
+<div class="section">
+
+
+<h2>
+Important Notice
+</h2>
+
+
+<p class="disclaimer">
+
+This website is a personal voluntary donation page.
+Donations are completely optional and are not a purchase, investment, or obligation of any kind.
+
+Cryptocurrency transactions are irreversible. Please verify wallet addresses carefully before sending any funds.
+
+Thank you to everyone who chooses to support me. Every contribution, regardless of size, is genuinely appreciated.
+
+</p>
+
+
+</div>
+
+</div>
+
+
+
 <script>
-function openModal(){
-    document.getElementById('modal').style.display='flex';
+
+
+// Copy wallet address
+
+function copyText(text){
+
+navigator.clipboard.writeText(text).then(()=>{
+
+alert("Wallet address copied!");
+
+});
+
 }
-function closeModal(){
-    document.getElementById('modal').style.display='none';
+
+
+
+// Dark / Light mode
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+localStorage.setItem(
+"theme",
+document.body.classList.contains("light")
+? "light"
+: "dark"
+);
+
 }
-window.onclick = function(event){
-    let modal = document.getElementById('modal');
-    if(event.target === modal){
-        modal.style.display='none';
-    }
+
+
+
+// Load saved theme
+
+if(localStorage.getItem("theme") === "light"){
+
+document.body.classList.add("light");
+
 }
+
+
+
+
+// Generate QR codes
+
+new QRCode(document.getElementById("btc"),{
+
+text:"bitcoin:bc1pmcj6n8xyd7xt6ww96afv434yqs7ggac77a70qyqdfxxd5mzlvdcsle537z",
+
+width:150,
+
+height:150
+
+});
+
+
+
+new QRCode(document.getElementById("eth"),{
+
+text:"ethereum:0xc7D01556a210A891DdD5EadFDCEA2637231B475D",
+
+width:150,
+
+height:150
+
+});
+
+
+
+new QRCode(document.getElementById("sol"),{
+
+text:"solana:6EqqG1Yc6SzQt1JcDfk7E6YksmqDxWaddnyUro4J9RFS",
+
+width:150,
+
+height:150
+
+});
+
+
+
+// Scroll reveal animation
+
+const observer = new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},
+
+{
+threshold:0.15
+}
+
+);
+
+
+
+document.querySelectorAll(".section").forEach(section=>{
+
+observer.observe(section);
+
+});
+
+
 </script>
+
+
 </body>
+
 </html>
+<body>
+
+
+<button class="toggle" onclick="toggleTheme()">
+☀ / ☾
+</button>
+
+
+<div class="container">
+
+
+<header class="hero">
+
+<div class="badge">
+VOLUNTARY CRYPTO SUPPORT
+</div>
+
+<h1>
+Help Me Rebuild My Future
+</h1>
+
+<p class="subtitle">
+A personal fundraising page created to receive voluntary support during a difficult legal and financial situation.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#donate">
+Support Through Crypto
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</div>
+
+</header>
+
+
+<div class="section">
+
+
+<h2>My Story</h2>
+
+
+<p>
+I am currently facing approximately 
+<span class="highlight">$40,000 USD</span>
+in legal debt after being sued by a group known as "Juice".
+</p>
+
+
+<br>
+
+
+<p>
+Due to the ongoing situation, my access to traditional financial services has been severely limited. Cryptocurrency is currently the most practical way for me to receive voluntary support.
+</p>
+
+
+<br>
+
+
+<p>
+Every donation, regardless of the amount, is deeply appreciated. Even a small contribution can make a meaningful difference.
+</p>
+
+
+<br>
+
+
+<p>
+Donations are completely voluntary. There is no obligation to contribute — your support and simply taking the time to read my story already means a lot.
+</p>
+
+
+</div>
+
+
+<div class="section">
+
+
+<h2>Donation Goal</h2>
+
+
+<p>
+Current goal: <strong>$40,000</strong>
+</p>
+
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+
+</div>
+
+
+<div class="section">
+
+
+<h2>Accepted Cryptocurrencies</h2>
+
+
+<div class="crypto">
+
+<img src="https://cryptologos.cc/logos/bitcoin-btc-logo.svg?v=040">
+
+
+<div class="crypto-info">
+
+<div class="crypto-name">
+Bitcoin (BTC)
+</div>
+
+
+<div class="address">
+bc1pmcj6n8xyd7xt6ww96afv434yqs7ggac77a70qyqdfxxd5mzlvdcsle537z
+</div>
+
+
+<div class="actions">
+
+<button onclick="copyText('bc1pmcj6n8xyd7xt6ww96afv434yqs7ggac77a70qyqdfxxd5mzlvdcsle537z')">
+Copy
+</button>
+
+</div>
+
+
+<div class="qr" id="btc"></div>
+
+
+</div>
+
+</div>
